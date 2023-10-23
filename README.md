@@ -2,7 +2,10 @@
 
 ### Pre-commit
 
-To run pre-commit
+To run pre-commit before commit and push:
+`pre-commit install --hook-type pre-commit --hook-type pre-push`
+
+or just before push:
 `pre-commit install --hook-type pre-push`
 
 otherwise:
