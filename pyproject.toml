@@ -3,11 +3,15 @@ name = "fastapi-template"
 version = "0.1.0"
 description = "a simple template for your next fastapi project"
 authors = ["LeonardoNatale <natale.leonardo1997@gmail.com>"]
+packages = [
+    { include="src", from="." },
+]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.11"
 fastapi = "^0.104.0"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.1"
@@ -18,12 +22,15 @@ pre-commit = "^3.5.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.scripts]
+dev = "src.main:start"
+
 [tool.black]
 line-length = 100
-target-version = ['py310']
+target-version = ['py311']
 
 [tool.ruff]
 select = ["E", "F", "I", "UP"]  # https://beta.ruff.rs/docs/rules/
 line-length = 100
-target-version = 'py310'
+target-version = 'py311'
 ignore = ["E501"]

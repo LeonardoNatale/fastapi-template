@@ -1,6 +1,19 @@
-from collections.abc import Iterable
+import uvicorn
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
-def sum_even_numbers(numbers: Iterable[int]) -> int:
-    """Given an iterable of integers, return the sum of all even numbers in the iterable. Extra space"""
-    return sum(num for num in numbers if num % 2 == 0)
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str | None = None):
+    return {"item_id": item_id, "q": q}
+
+
+def start():
+    """Launched with `poetry run start` at root level"""
+    uvicorn.run("src.main:app", host="0.0.0.0", port=8000, reload=True)
