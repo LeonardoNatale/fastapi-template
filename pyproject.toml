@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "a simple template for your next fastapi project"
 authors = ["LeonardoNatale <natale.leonardo1997@gmail.com>"]
 packages = [
-    { include="src", from="." },
+    { include="app", from="." },
 ]
 readme = "README.md"
 
@@ -23,7 +23,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-dev = "src.main:start"
+dev = "app.main:start"
 
 [tool.black]
 line-length = 100
